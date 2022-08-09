@@ -6,7 +6,7 @@ export default class Element {
   constructor(
     name: string,
     attributes: AttributesType | null,
-    ...children: Element[]
+    ...children: (Element | string | number)[]
   ) {
     this.element = document.createElement(name);
     const trueAttributes = attributes || {};
@@ -20,7 +20,18 @@ export default class Element {
         this.element.setAttribute(name, value.toString());
       }
     });
-    children.forEach((child) => this.element.appendChild(child.element));
+    children.forEach((child) => {
+      let node: Node;
+      if (typeof child === "string") {
+        node = document.createTextNode(child);
+      } else if (typeof child === "number") {
+        node = document.createTextNode(child.toString());
+      } else {
+        node = child.element;
+      }
+
+      this.element.appendChild(node);
+    });
   }
 }
 
