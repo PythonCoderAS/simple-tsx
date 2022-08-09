@@ -6,7 +6,7 @@ export default class Element {
   constructor(
     tagName: string,
     attributes: AttributesType | null,
-    ...children: (Element | string | number)[]
+    ...children: (Element | string | number | null | undefined)[]
   ) {
     this.element = document.createElement(tagName);
     const trueAttributes = attributes || {};
@@ -26,6 +26,8 @@ export default class Element {
         node = document.createTextNode(child);
       } else if (typeof child === "number") {
         node = document.createTextNode(child.toString());
+      } else if (child === null || child === undefined) {
+        return;
       } else {
         node = child.element;
       }
