@@ -4,11 +4,11 @@ export default class Element {
   element: HTMLElement;
 
   constructor(
-    name: string,
+    tagName: string,
     attributes: AttributesType | null,
     ...children: (Element | string | number)[]
   ) {
-    this.element = document.createElement(name);
+    this.element = document.createElement(tagName);
     const trueAttributes = attributes || {};
     Object.entries(trueAttributes).forEach(([key, value]) => {
       if (key.startsWith("on") && key.toLowerCase() in window) {
@@ -17,7 +17,7 @@ export default class Element {
           value as EventListener
         );
       } else {
-        this.element.setAttribute(name, value.toString());
+        this.element.setAttribute(key, value.toString());
       }
     });
     children.forEach((child) => {
