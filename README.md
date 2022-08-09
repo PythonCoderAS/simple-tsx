@@ -1,11 +1,24 @@
-# typescript-project-template
-Template repo for new TypeScript projects.
+# simple-tsx
 
-This repo assumes the following:
+A simple way to use `.tsx` files without Babel or React!
 
-* Source code lives in the `src` directory.
-* The main export is located in `src/index.ts`.
-* Tests live in the `test` directory.
-* Each test is name `<name>.test.ts`.
-* The `npm_token`, `app_id`, and `app_private_key` secrets are present in the repo.
-* The code will be a CommonJS module.
+## Installation
+
+npm: `npm install --save simple-tsx`
+yarn: `yarn add simple-tsx`
+
+## Usage
+
+In your `tsconfig.json` file, add these following values to the `compilerOptions` section:
+
+```json
+    "jsx": "react",
+    "jsxFactory": "SimpleTSX.createElement",
+    "jsxFragmentFactory": "SimpleTSX.createFragment",
+```
+
+In each of your `.tsx` files, put the following import line on top:
+
+```tsx
+import * as SimpleTSX from "simple-tsx";
+```
