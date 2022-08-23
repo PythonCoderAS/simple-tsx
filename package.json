@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/PythonCoderAS/simple-tsx#readme",
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "@types/chai": "^4.3.3",
     "@types/chai-as-promised": "^7.1.5",
     "@types/mocha": "^9.1.1",
