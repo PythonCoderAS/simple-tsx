@@ -1,17 +1,21 @@
 import { AttributeValueType, AttributesType } from "./types";
 
 export default class Element {
-  element: HTMLElement;
+  private privElement?: HTMLElement;
 
   // This will allow you to use this class for IntrinsicElements. I know this is a hacky way to do things but I don't have anything better.
-  [name: string]: AttributeValueType | HTMLElement;
+  [name: string]: AttributeValueType | HTMLElement | undefined;
+
+  public get element(): HTMLElement {
+    return this.privElement!
+  }
 
   constructor(
     tagName: string,
     attributes: AttributesType | null,
     ...children: (Element | string | number | null | undefined)[]
   ) {
-    this.element = document.createElement(tagName);
+    this.privElement = document.createElement(tagName);
     const trueAttributes = attributes || {};
     Object.entries(trueAttributes).forEach(([key, value]) => {
       if (key.startsWith("on") && key.toLowerCase() in window) {
