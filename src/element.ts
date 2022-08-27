@@ -1,7 +1,10 @@
-import { AttributesType } from "./types";
+import { AttributeValueType, AttributesType } from "./types";
 
 export default class Element {
   element: HTMLElement;
+
+  // This will allow you to use this class for IntrinsicElements. I know this is a hacky way to do things but I don't have anything better.
+  [name: string]: AttributeValueType | HTMLElement;
 
   constructor(
     tagName: string,

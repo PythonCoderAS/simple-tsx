@@ -1,3 +1,5 @@
+export type AttributeValueType = string | ((event: Event) => unknown);
+
 export type AttributesType = {
-  [key: string]: string | ((event: Event) => unknown);
+  [key: string]: AttributeValueType;
 };
