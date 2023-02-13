@@ -7,7 +7,7 @@ export default class Element {
   [name: string]: AttributeValueType | HTMLElement | undefined;
 
   public get element(): HTMLElement {
-    return this.privElement!
+    return this.privElement!;
   }
 
   constructor(
